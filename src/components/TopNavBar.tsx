@@ -6,16 +6,21 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 
+import { usePathname } from "next/navigation";
+
+import Image from "next/image";
+import logoImg from "@/app/assets/images/logo.png";
+
 export default function TopNavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const links = [
-    { name: "Home", href: "#", active: true },
-    { name: "History", href: "#" },
-    { name: "Portfolio", href: "#" },
-    { name: "About Me", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "About Me", href: "/about" },
+    { name: "Projects", href: "/project" },
+    { name: "Skills", href: "/skills" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -26,9 +31,15 @@ export default function TopNavBar() {
       className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-outline-variant lg:pl-20"
     >
       <div className="flex justify-between items-center px-4 md:px-8 py-4 max-w-[1280px] mx-auto relative">
-        <div className="text-xl md:text-2xl font-black text-on-surface tracking-tighter font-label-caps">
-          SAMIR.DEV
-        </div>
+        <Link href="/" className="relative w-12 h-12 md:w-14 md:h-14 hover:scale-105 transition-transform active:scale-95">
+          <Image
+            src={logoImg}
+            alt="SAMIR.DEV Logo"
+            fill
+            className="object-contain"
+            priority
+          />
+        </Link>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -40,18 +51,22 @@ export default function TopNavBar() {
 
         {/* Navigation Links */}
         <div className={`${isMobileMenuOpen ? "flex" : "hidden"} absolute top-full left-0 w-full bg-surface-container border-b border-white/5 flex-col p-6 gap-6 md:static md:w-auto md:bg-transparent md:border-none md:flex md:flex-row md:p-0 md:gap-8 items-center`}>
-          {links.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`font-headline-md tracking-tight text-base md:text-sm font-medium transition-colors ${link.active
-                ? "text-secondary md:border-b-2 border-secondary md:pb-1"
-                : "text-on-surface/70 hover:text-on-surface hover:text-secondary"
-                }`}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`font-headline-md tracking-tight text-base md:text-sm font-medium transition-colors ${isActive
+                  ? "text-secondary md:border-b-2 border-secondary md:pb-1"
+                  : "text-on-surface/70 hover:text-on-surface hover:text-secondary"
+                  }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
           <Button className="md:hidden w-full bg-secondary-container text-on-secondary-container font-label-md px-6 py-4 rounded-xl hover:bg-secondary-fixed transition-all duration-300 border-0 h-auto">
             Hire Me
           </Button>

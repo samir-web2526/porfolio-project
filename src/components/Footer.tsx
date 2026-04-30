@@ -1,4 +1,6 @@
 import NextLink from "next/link";
+import Image from "next/image";
+import logoImg from "@/app/assets/images/logo.png";
 
 // Custom SVG Icons for brands since they are missing in this Lucide version
 const FacebookIcon = ({ size = 20 }: { size?: number }) => (
@@ -19,11 +21,11 @@ const LinkedinIcon = ({ size = 20 }: { size?: number }) => (
 
 export default function Footer() {
   const quickLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#" },
-    { name: "Skills", href: "#" },
-    { name: "Projects", href: "#" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About Me", href: "/about" },
+    { name: "Projects", href: "/project" },
+    { name: "Skills", href: "/skills" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const socialLinks = [
@@ -38,9 +40,14 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 py-16 max-w-7xl mx-auto w-full font-headline-xl text-sm tracking-wide">
         {/* Column 1: Identity */}
         <div className="flex flex-col space-y-6 w-full">
-          <div className="text-2xl font-black text-secondary tracking-tighter">
-            SAMIR BAISHNAB
-          </div>
+          <NextLink href="/" className="relative w-16 h-16 hover:scale-105 transition-transform active:scale-95">
+            <Image
+              src={logoImg}
+              alt="SAMIR BAISHNAB Logo"
+              fill
+              className="object-contain"
+            />
+          </NextLink>
           <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed w-full">
             Fullstack engineer specializing in architectural depth and digital clarity. Crafting performant systems within the midnight void of modern technology.
           </p>

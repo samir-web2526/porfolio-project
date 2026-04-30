@@ -4,6 +4,7 @@ import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Hand, History } from "lucide-react";
+import profileImg from "@/app/assets/images/profile.png";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -97,9 +98,10 @@ export default function HeroSection() {
           <div className="relative h-full w-full rounded-full overflow-hidden border border-outline-variant bg-secondary/20 shadow-2xl" style={{ backgroundColor: "rgba(0, 209, 178, 0.15)" }}>
             <Image
               alt="Samir Baishnab"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5bYkCi631RfKzpTCLeW_IU_NDT0O75YQejDfZuZ-7QosqMPDvoDRjh5th47sjUP4QwM5nTFlbe3WNAw53_oph_S2ElbNKDU1742LitjMSOH0s3JR2O27M-QeAxrbgslP-ariYoBszplcwIFUlNzXdwg3UrJKsMOhSEz3JXQwLyEnYwIEbruvQOOA2N8-af8xu5UJk9QtZoiJkjEfEhppdCKl7N-7fE275uhIPtKbFZvMKOsbSt7h3AAdZD8PUqtcltot5CIkLL2mI"
+              src={profileImg}
               fill
               className="object-cover transition-all duration-700 drop-shadow-2xl"
+              priority
             />
           </div>
 

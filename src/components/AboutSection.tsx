@@ -27,7 +27,7 @@ export default function AboutSection() {
   return (
     <section className="pt-32 pb-24 px-4 md:px-6 max-w-[1280px] mx-auto relative z-10" id="about">
       <div className="flex flex-col items-center mb-16">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -36,7 +36,7 @@ export default function AboutSection() {
           <span className="h-[1px] w-8 bg-secondary"></span>
           <span className="text-secondary font-label-md uppercase tracking-[0.3em] text-xs">Intro</span>
         </motion.div>
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -59,7 +59,7 @@ export default function AboutSection() {
           {/* Decorative Frames based on Reference */}
           <div className="absolute -top-4 -left-4 w-24 h-24 border-l-2 border-t-2 border-secondary/40 rounded-tl-xl transition-all duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
           <div className="absolute -bottom-4 -right-4 w-24 h-24 border-r-2 border-b-2 border-secondary/40 rounded-br-xl transition-all duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
-          
+
           <div className="relative overflow-hidden rounded-xl border border-secondary/20 shadow-2xl bg-surface-container-low p-2">
             <div className="relative w-full aspect-[4/5]">
               <Image
@@ -98,7 +98,7 @@ export default function AboutSection() {
             <div className="space-y-4 relative">
               {/* Vertical Timeline Glow Line */}
               <div className="absolute left-[13px] top-2 bottom-2 w-0.5 timeline-line opacity-50"></div>
-              
+
               {/* Undergraduate Item */}
               <div className="education-card animate-stagger-1 flex gap-6 p-4 rounded-xl border border-transparent">
                 <div className="relative z-10 flex flex-col items-center pt-2">
@@ -151,7 +151,6 @@ export default function AboutSection() {
               </div>
             </div>
           </div>
-
 
           {/* Interests.json Section */}
           <motion.div variants={itemVariants} className="glass-card rounded-xl p-6 border border-secondary/10">

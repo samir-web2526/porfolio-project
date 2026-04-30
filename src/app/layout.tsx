@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import TopNavBar from "@/components/TopNavBar";
+import SideNavBar from "@/components/SideNavBar";
+import Footer from "@/components/Footer";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -26,7 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
+      className={`dark ${spaceGrotesk.variable} ${inter.variable} antialiased`}
     >
       <head>
         <link
@@ -34,9 +37,14 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
       </head>
-      <body className="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden min-h-full flex flex-col">
+      <body className="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden min-h-screen flex flex-col">
         <SmoothScrollProvider>
-          {children}
+          <TopNavBar />
+          <SideNavBar />
+          <main className="min-h-screen grid-pattern pt-20 lg:pl-20 bg-background relative z-10">
+            {children}
+          </main>
+          <Footer />
         </SmoothScrollProvider>
       </body>
     </html>
