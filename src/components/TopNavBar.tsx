@@ -23,7 +23,7 @@ export default function TopNavBar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-white/5"
+      className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-white/5 lg:pl-20"
     >
       <div className="flex justify-between items-center px-4 md:px-8 py-4 max-w-[1280px] mx-auto relative">
         <div className="text-xl md:text-2xl font-black text-white tracking-tighter font-label-caps">
