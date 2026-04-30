@@ -216,4 +216,52 @@
     right: 0;
     background: linear-gradient(to left, #08132a, transparent);
   }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px) rotateX(-5deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+  }
+
+  .animate-stagger-1 { animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.1s; }
+  .animate-stagger-2 { animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.2s; }
+  .animate-stagger-3 { animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.3s; }
+
+  .education-card {
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    perspective: 1000px;
+    opacity: 0;
+  }
+
+  .education-card:hover {
+    transform: translateY(-4px) translateZ(10px);
+    background: rgba(65, 228, 192, 0.04);
+    box-shadow: 0 10px 30px -10px rgba(65, 228, 192, 0.15);
+    border-color: rgba(65, 228, 192, 0.2);
+  }
+
+  .education-card:hover .timeline-dot {
+    transform: scale(1.4);
+    box-shadow: 0 0 15px rgba(65, 228, 192, 0.8);
+    background-color: #41e4c0;
+  }
+
+  .timeline-line {
+    background: linear-gradient(to bottom, 
+        rgba(65, 228, 192, 0.6) 0%, 
+        rgba(65, 228, 192, 0.1) 100%);
+    box-shadow: 0 0 8px rgba(65, 228, 192, 0.1);
+  }
+
+  .tech-badge {
+    background: rgba(65, 228, 192, 0.05);
+    border: 1px solid rgba(65, 228, 192, 0.2);
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.05em;
+  }
 }
