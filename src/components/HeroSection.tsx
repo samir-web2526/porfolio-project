@@ -137,7 +137,7 @@ export default function HeroSection() {
               <History className="text-on-secondary-container" size={24} />
             </div>
             <div>
-              <div className="text-on-surface font-bold text-[10px] md:text-sm">13 Years</div>
+              <div className="text-on-surface font-bold text-[10px] md:text-sm">1+ Years Learning</div>
               <div className="text-on-surface-variant text-[8px] md:text-[10px] uppercase tracking-widest font-label-caps font-bold">Of Experience</div>
             </div>
           </motion.div>
