@@ -23,10 +23,10 @@ export default function TopNavBar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-white/5 lg:pl-20"
+      className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-outline-variant lg:pl-20"
     >
       <div className="flex justify-between items-center px-4 md:px-8 py-4 max-w-[1280px] mx-auto relative">
-        <div className="text-xl md:text-2xl font-black text-white tracking-tighter font-label-caps">
+        <div className="text-xl md:text-2xl font-black text-on-surface tracking-tighter font-label-caps">
           SAMIR.DEV
         </div>
 
@@ -46,7 +46,7 @@ export default function TopNavBar() {
               href={link.href}
               className={`font-headline-md tracking-tight text-base md:text-sm font-medium transition-colors ${link.active
                 ? "text-secondary md:border-b-2 border-secondary md:pb-1"
-                : "text-on-surface/70 hover:text-white hover:text-secondary"
+                : "text-on-surface/70 hover:text-on-surface hover:text-secondary"
                 }`}
             >
               {link.name}

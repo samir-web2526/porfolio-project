@@ -120,7 +120,7 @@ export default function SkillsSection() {
                     alt={skill.name}
                     width={48}
                     height={48}
-                    className="w-full h-full object-contain mix-blend-lighten group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-contain dark:mix-blend-lighten group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
               </div>

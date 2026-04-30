@@ -54,7 +54,7 @@ export default function Footer() {
               <NextLink
                 key={link.name}
                 href={link.href}
-                className="text-slate-500 hover:text-secondary hover:drop-shadow-[0_0_5px_rgba(34,211,238,0.5)] transition-all duration-300"
+                className="text-on-surface-variant hover:text-secondary hover:drop-shadow-[0_0_5px_rgba(65,228,192,0.5)] transition-all duration-300 font-body-md"
               >
                 {link.name}
               </NextLink>
@@ -67,14 +67,14 @@ export default function Footer() {
           <h3 className="text-on-surface font-bold uppercase tracking-widest text-xs">Connect</h3>
           <div className="flex gap-4">
             {socialLinks.map((link) => (
-              <a
+              <NextLink
                 key={link.name}
                 aria-label={link.name}
                 href={link.href}
                 className="w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/10 hover:shadow-[0_0_15px_rgba(65,228,192,0.4)] hover:-translate-y-[2px] transition-all duration-300 bg-surface-container-low"
               >
                 {link.icon}
-              </a>
+              </NextLink>
             ))}
           </div>
           <div className="mt-4">
@@ -84,9 +84,9 @@ export default function Footer() {
       </div>
 
       {/* Copyright Strip */}
-      <div className="w-full border-t border-white/5 py-8">
+      <div className="w-full border-t border-outline-variant py-8">
         <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="font-body-md text-xs w-full text-center text-slate-600 tracking-wider">
+          <p className="font-body-md text-xs w-full text-center text-on-surface-variant/60 tracking-wider">
             © {new Date().getFullYear()} Samir Baishnab. Architect of the Digital Void.
           </p>
         </div>

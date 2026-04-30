@@ -40,7 +40,7 @@ export default function HeroSection() {
           <span className="text-secondary font-label-caps text-[10px] uppercase tracking-widest font-bold">Available for New Projects</span>
         </motion.div>
 
-        <motion.h1 variants={itemVariants} className="font-display-xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight font-bold">
+        <motion.h1 variants={itemVariants} className="font-display-xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-on-surface leading-tight font-bold">
           Architecting <span className="text-secondary">Scalable</span> Fullstack Solutions
         </motion.h1>
 
@@ -57,7 +57,7 @@ export default function HeroSection() {
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
 
-          <Link href="#" className="text-secondary font-label-md flex items-center gap-2 hover:text-white transition-colors group p-4 font-medium">
+          <Link href="#" className="text-secondary font-label-md flex items-center gap-2 hover:text-on-surface transition-colors group p-4 font-medium">
             Portfolio
             <ExternalLink size={20} className="group-hover:rotate-45 transition-transform" />
           </Link>
@@ -91,10 +91,10 @@ export default function HeroSection() {
 
         {/* Main Image Container */}
         <div className="relative z-10 w-full aspect-square max-w-[320px] sm:max-w-[420px] md:max-w-[500px] mx-auto">
-          <div className="absolute inset-0 border-[1px] border-white/5 rounded-full scale-105"></div>
+          <div className="absolute inset-0 border-[1px] border-outline-variant rounded-full scale-105"></div>
           <div className="absolute inset-0 border-[1px] border-secondary/30 rounded-full scale-110 transition-transform hover:scale-100 duration-500"></div>
 
-          <div className="relative h-full w-full rounded-full overflow-hidden border border-white/5 bg-secondary/20 shadow-2xl" style={{ backgroundColor: "rgba(0, 209, 178, 0.15)" }}>
+          <div className="relative h-full w-full rounded-full overflow-hidden border border-outline-variant bg-secondary/20 shadow-2xl" style={{ backgroundColor: "rgba(0, 209, 178, 0.15)" }}>
             <Image
               alt="Samir Baishnab"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5bYkCi631RfKzpTCLeW_IU_NDT0O75YQejDfZuZ-7QosqMPDvoDRjh5th47sjUP4QwM5nTFlbe3WNAw53_oph_S2ElbNKDU1742LitjMSOH0s3JR2O27M-QeAxrbgslP-ariYoBszplcwIFUlNzXdwg3UrJKsMOhSEz3JXQwLyEnYwIEbruvQOOA2N8-af8xu5UJk9QtZoiJkjEfEhppdCKl7N-7fE275uhIPtKbFZvMKOsbSt7h3AAdZD8PUqtcltot5CIkLL2mI"
@@ -113,8 +113,8 @@ export default function HeroSection() {
               <Hand className="text-secondary" size={24} />
             </div>
             <div>
-              <div className="text-white font-bold text-[10px] md:text-sm">Hi, I&apos;m Samir</div>
-              <div className="text-on-surface/50 text-[8px] md:text-[10px] uppercase tracking-widest font-label-caps font-bold">Fullstack Expert</div>
+              <div className="text-on-surface font-bold text-[10px] md:text-sm">Hi, I&apos;m Samir</div>
+              <div className="text-on-surface-variant text-[8px] md:text-[10px] uppercase tracking-widest font-label-caps font-bold">Fullstack Expert</div>
             </div>
           </motion.div>
 
@@ -128,8 +128,8 @@ export default function HeroSection() {
               <History className="text-on-secondary-container" size={24} />
             </div>
             <div>
-              <div className="text-white font-bold text-[10px] md:text-sm">13 Years</div>
-              <div className="text-on-surface/50 text-[8px] md:text-[10px] uppercase tracking-widest font-label-caps font-bold">Of Experience</div>
+              <div className="text-on-surface font-bold text-[10px] md:text-sm">13 Years</div>
+              <div className="text-on-surface-variant text-[8px] md:text-[10px] uppercase tracking-widest font-label-caps font-bold">Of Experience</div>
             </div>
           </motion.div>
         </div>
