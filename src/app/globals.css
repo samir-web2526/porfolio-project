@@ -50,16 +50,16 @@
   --color-secondary: #41e4c0;
   --color-secondary-container: #00c7a5;
   --color-on-secondary-container: #004d3f;
-  --color-surface-container-low: #101b33;
-  --color-surface-container-lowest: #030d25;
-  --color-surface-container-highest: #2a344d;
-  --color-surface-container-high: #1f2942;
-  --color-surface-container: #151f37;
-  --color-surface-dim: #08132a;
+  --color-surface-container-low: #0a0a0a;
+  --color-surface-container-lowest: #050505;
+  --color-surface-container-highest: #1a1a1a;
+  --color-surface-container-high: #141414;
+  --color-surface-container: #0f0f0f;
+  --color-surface-dim: #050505;
   --color-surface-tint: #b9c7e4;
-  --color-surface-bright: #2f3952;
-  --color-surface-variant: #2a344d;
-  --color-surface: #08132a;
+  --color-surface-bright: #262626;
+  --color-surface-variant: #1a1a1a;
+  --color-surface: #050505;
   --color-on-surface: #d9e2ff;
   --color-on-surface-variant: #c5c6cd;
   --color-inverse-surface: #d9e2ff;
@@ -89,6 +89,21 @@
   --font-body-md: "Inter", sans-serif;
   --font-label-caps: "Space Grotesk", sans-serif;
   --font-display-xl: "Space Grotesk", sans-serif;
+
+  /* Font Sizes */
+  --text-headline-xl: 4rem;
+  --text-headline-lg: 3rem;
+  --text-headline-md: 2rem;
+  --text-body-lg: 1.25rem;
+  --text-body-md: 1rem;
+  --text-label-md: 0.875rem;
+  --text-label-caps: 0.75rem;
+  --text-display-xl: 5rem;
+  --text-code-sm: 0.875rem;
+
+  /* Line Heights */
+  --leading-headline-xl: 1.1;
+  --leading-body-lg: 1.6;
 }
 
 :root {
@@ -164,9 +179,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
@@ -175,30 +192,42 @@
 @layer utilities {
   .grid-pattern {
     background-image: linear-gradient(rgba(185, 199, 228, 0.03) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(185, 199, 228, 0.03) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(185, 199, 228, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
   }
+
   .glass-card {
     background: rgba(21, 31, 55, 0.6);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(185, 199, 228, 0.1);
   }
+
   .blue-glow:hover {
     box-shadow: 0 0 20px rgba(0, 199, 165, 0.4);
   }
+
   .glow-cyan {
     box-shadow: 0 0 15px rgba(100, 255, 218, 0.15);
   }
+
   @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
   }
+
   .animate-marquee {
     animation: marquee 40s linear infinite;
   }
+
   .animate-marquee:hover {
     animation-play-state: paused;
   }
+
   .marquee-container::before,
   .marquee-container::after {
     content: "";
@@ -208,10 +237,12 @@
     height: 100%;
     z-index: 2;
   }
+
   .marquee-container::before {
     left: 0;
     background: linear-gradient(to right, #08132a, transparent);
   }
+
   .marquee-container::after {
     right: 0;
     background: linear-gradient(to left, #08132a, transparent);
@@ -222,15 +253,24 @@
       opacity: 0;
       transform: translateY(30px) rotateX(-5deg);
     }
+
     to {
       opacity: 1;
       transform: translateY(0) rotateX(0);
     }
   }
 
-  .animate-stagger-1 { animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.1s; }
-  .animate-stagger-2 { animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.2s; }
-  .animate-stagger-3 { animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.3s; }
+  .animate-stagger-1 {
+    animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.1s;
+  }
+
+  .animate-stagger-2 {
+    animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.2s;
+  }
+
+  .animate-stagger-3 {
+    animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.3s;
+  }
 
   .education-card {
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -252,8 +292,8 @@
   }
 
   .timeline-line {
-    background: linear-gradient(to bottom, 
-        rgba(65, 228, 192, 0.6) 0%, 
+    background: linear-gradient(to bottom,
+        rgba(65, 228, 192, 0.6) 0%,
         rgba(65, 228, 192, 0.1) 100%);
     box-shadow: 0 0 8px rgba(65, 228, 192, 0.1);
   }

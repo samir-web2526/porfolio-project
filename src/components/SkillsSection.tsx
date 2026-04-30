@@ -82,7 +82,7 @@ export default function SkillsSection() {
     <section className="pt-32 pb-24 overflow-x-hidden relative z-10">
       <div className="px-6 md:px-12 max-w-[1280px] mx-auto">
         {/* Hero Section Header */}
-        <motion.header 
+        <motion.header
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -101,7 +101,7 @@ export default function SkillsSection() {
         {/* Skills Bento Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 mb-32">
           {skills.map((skill, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -115,11 +115,11 @@ export default function SkillsSection() {
                   <circle className="text-secondary" cx="40" cy="40" fill="transparent" r="36" stroke="currentColor" strokeDasharray="226.2" strokeDashoffset={skill.offset} strokeWidth="4"></circle>
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center p-5 bg-transparent">
-                  <Image 
-                    src={skill.image} 
-                    alt={skill.name} 
-                    width={48} 
-                    height={48} 
+                  <Image
+                    src={skill.image}
+                    alt={skill.name}
+                    width={48}
+                    height={48}
                     className="w-full h-full object-contain mix-blend-lighten group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
@@ -134,7 +134,7 @@ export default function SkillsSection() {
         {/* Engineering Philosophy */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="w-full order-2 lg:order-1">
-            <motion.header 
+            <motion.header
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -148,7 +148,7 @@ export default function SkillsSection() {
                 Engineering Philosophy
               </h2>
             </motion.header>
-            
+
             <div className="space-y-4 md:space-y-6">
               {[
                 {
@@ -167,7 +167,7 @@ export default function SkillsSection() {
                   icon: <Gauge className="w-6 h-6" />
                 }
               ].map((item, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -188,9 +188,9 @@ export default function SkillsSection() {
               ))}
             </div>
           </div>
-          
+
           {/* Philosophy Image */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -199,9 +199,9 @@ export default function SkillsSection() {
           >
             <div className="relative rounded-2xl overflow-hidden glass-card p-2 border border-outline-variant/30 glow-cyan aspect-[4/3] lg:aspect-auto">
               <div className="relative w-full h-full lg:h-[600px]">
-                <Image 
-                  alt="Server Infrastructure" 
-                  className="rounded-xl object-cover opacity-80" 
+                <Image
+                  alt="Server Infrastructure"
+                  className="rounded-xl object-cover opacity-80"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvrEqhRecoQgI4XOkLuXU-Wc3pbVyx8_QahtDuDzdwcn6H9ZDwwiILf8v_y7voxVhL14zt_md1acC9coFS3E64xDEqtZBEfa4iQuOfx3yF9ex5bP4rtQcnJ_dCLOf3LpReDcYp5X9psx8bGEsySdtHKUoF8sCYLd_rfzfU9uuwz-J7Un-djnrJsFxJjq40xOTckgmWIYz_uanIYJleohp-GauB6qK8eOwrvIp34pXU_XyiAJNhX_3_zswm_H7ulLxNMeYdwxVrB-N9"
                   fill
                 />

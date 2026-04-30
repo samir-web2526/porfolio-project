@@ -44,8 +44,8 @@ export default function HeroSection() {
           Architecting <span className="text-secondary">Scalable</span> Fullstack Solutions
         </motion.h1>
 
-        <motion.p 
-          variants={itemVariants} 
+        <motion.p
+          variants={itemVariants}
           className="text-on-surface-variant font-body-lg text-base md:text-lg max-w-[600px] mx-auto lg:mx-0"
         >
           Hi, I'm Samir Baishnab. I bridge the gap between complex backend architecture and seamless frontend experiences to build robust, high-performance web applications.
@@ -56,7 +56,7 @@ export default function HeroSection() {
             Let&apos;s Talk
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
-          
+
           <Link href="#" className="text-secondary font-label-md flex items-center gap-2 hover:text-white transition-colors group p-4 font-medium">
             Portfolio
             <ExternalLink size={20} className="group-hover:rotate-45 transition-transform" />
@@ -88,12 +88,12 @@ export default function HeroSection() {
       >
         {/* Background Glow */}
         <div className="absolute inset-0 bg-secondary/10 blur-[80px] md:blur-[120px] rounded-full scale-75 pointer-events-none"></div>
-        
+
         {/* Main Image Container */}
         <div className="relative z-10 w-full aspect-square max-w-[320px] sm:max-w-[420px] md:max-w-[500px] mx-auto">
           <div className="absolute inset-0 border-[1px] border-white/5 rounded-full scale-105"></div>
           <div className="absolute inset-0 border-[1px] border-secondary/30 rounded-full scale-110 transition-transform hover:scale-100 duration-500"></div>
-          
+
           <div className="relative h-full w-full rounded-full overflow-hidden border border-white/5 bg-secondary/20 shadow-2xl" style={{ backgroundColor: "rgba(0, 209, 178, 0.15)" }}>
             <Image
               alt="Samir Baishnab"

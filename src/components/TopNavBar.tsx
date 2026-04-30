@@ -29,9 +29,9 @@ export default function TopNavBar() {
         <div className="text-xl md:text-2xl font-black text-white tracking-tighter font-label-caps">
           SAMIR.DEV
         </div>
-        
+
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           className="md:hidden p-2 cursor-pointer text-on-surface/70 hover:text-secondary active:scale-95 transition-all"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -44,11 +44,10 @@ export default function TopNavBar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`font-headline-md tracking-tight text-base md:text-sm font-medium transition-colors ${
-                link.active
-                  ? "text-secondary md:border-b-2 border-secondary md:pb-1"
-                  : "text-on-surface/70 hover:text-white hover:text-secondary"
-              }`}
+              className={`font-headline-md tracking-tight text-base md:text-sm font-medium transition-colors ${link.active
+                ? "text-secondary md:border-b-2 border-secondary md:pb-1"
+                : "text-on-surface/70 hover:text-white hover:text-secondary"
+                }`}
             >
               {link.name}
             </Link>
