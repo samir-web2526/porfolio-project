@@ -3,8 +3,9 @@
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Hand, History } from "lucide-react";
+import { ArrowRight, Hand, History, Download } from "lucide-react";
 import profileImg from "@/app/assets/images/profile.png";
+
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -53,14 +54,20 @@ export default function HeroSection() {
         </motion.p>
 
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-md items-center justify-center lg:justify-start pt-4">
-          <button className="w-full sm:w-auto bg-secondary-container text-on-secondary-container font-label-md px-8 py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-secondary transition-all blue-glow group active:scale-95 border-0 font-medium">
+          <Link
+            href="/contact"
+            className="w-full sm:w-auto bg-secondary-container text-on-secondary-container font-label-md px-8 py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-secondary transition-all blue-glow group active:scale-95 font-medium"
+          >
             Let&apos;s Talk
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+            <ArrowRight
+              size={20}
+              className="group-hover:translate-x-1 transition-transform"
+            />
+          </Link>
 
           <Link href="#" className="text-secondary font-label-md flex items-center gap-2 hover:text-on-surface transition-colors group p-4 font-medium">
-            Portfolio
-            <ExternalLink size={20} className="group-hover:rotate-45 transition-transform" />
+            Download CV
+            <Download size={20} className="group-hover:rotate-45 transition-transform" />
           </Link>
         </motion.div>
 

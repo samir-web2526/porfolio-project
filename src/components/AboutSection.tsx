@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import profileImg from "@/app/assets/images/profile.png";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -64,7 +65,7 @@ export default function AboutSection() {
             <div className="relative w-full aspect-[4/5]">
               <Image
                 alt="Samir Baishnab Portrait"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8E65Avpmn-s_C5JnSxUR39uomJm36ZG93GQSqtlf5IiHO0LLcp3XebVFGEd-G1vXwViUD2mUpECrfKf0bNvTb9kh8mGqnwisALp9VlX5V5N19MaTrS4H8eLrbdTcM0dz8oEEX5gujqNvqEvMZhQGxpsuirIs8mdieKl6UeiehdIVXPOM4ER6Xv4QwfoIlvdyAVnagIdlFUq68czshqb56_1wIzCssfvkA7V4tNxrb9tM-BqUQhNAaVUrQQWsEUIfHagcYpIHdioxz"
+                src={profileImg}
                 fill
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out rounded-lg"
                 sizes="(max-width: 1024px) 100vw, 50vw"
