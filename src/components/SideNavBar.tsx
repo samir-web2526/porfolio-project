@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PanelLeft, Sun, Moon, PanelLeftClose } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import profileImg from "@/app/assets/images/profile.png";
+import profileImg from "@/assets/images/banner.png";
 import { useTranslation } from "react-i18next";
 
 export default function SideNavBar() {
