@@ -5,74 +5,114 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/projectData";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     projectId: string;
 }
 
 export default function ProjectDetailsClient({ projectId }: Props) {
-    const project = projects.find((p) => p.id === projectId);
+    const { t } = useTranslation();
 
-    if (!project) notFound();
+    if (!projects || !projectId) notFound();
+
+    const currentIndex = projects.findIndex((p) => p.id === projectId);
+
+    if (currentIndex === -1) notFound();
+
+    const project = projects[currentIndex];
+
+    // ২. নেভিগেশন ক্যালকুলেশন
+    const totalProjects = projects.length;
+    const prevProject = projects[(currentIndex - 1 + totalProjects) % totalProjects];
+    const nextProject = projects[(currentIndex + 1) % totalProjects];
 
     return (
         <main className="min-h-screen pt-24 pb-20 px-6 max-w-[1280px] mx-auto relative z-10">
 
             {/* Back Button */}
-            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-10">
+            <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="mb-10"
+            >
                 <Link
                     href="/project"
                     className="inline-flex items-center gap-2 text-secondary font-label-md uppercase tracking-widest text-sm hover:gap-3 transition-all"
                 >
                     <span className="material-symbols-outlined text-sm">arrow_back</span>
-                    Back to Projects
+                    {t("projects.backToProjects")}
                 </Link>
             </motion.div>
 
+            {/* Main Content Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-                {/* Image */}
+                {/* Project Image Showcase */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="relative h-80 lg:h-[480px] rounded-xl overflow-hidden border border-outline-variant/30"
+                    className="group relative h-80 lg:h-120 rounded-xl overflow-hidden border border-outline-variant/30 bg-surface-container-low/20"
                 >
-                    <Image
-                        src={project.heroImage || project.image}
-                        alt={project.title}
-                        fill
-                        className="object-contain"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                    {(project.heroImage || project.image) && (
+                        <Image
+                            src={project.heroImage || project.image}
+                            alt={project.title || t("projects.projectImage")}
+                            fill
+                            priority
+                            className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                        />
+                    )}
+                    <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent" />
                 </motion.div>
 
-                {/* Details */}
+                {/* Project Details Info */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                     className="flex flex-col gap-6"
                 >
-                    {/* Phase + Title */}
+                    {/* Header: Phase & Title */}
                     <div>
                         <div className="flex items-center gap-3 mb-3">
-                            <span className="h-[1px] w-8 bg-secondary" />
+                            <span className="h-px w-8 bg-secondary" />
                             <span className="font-label-md text-secondary uppercase tracking-[0.2em] text-xs">
-                                {project.phase || "Project"}
+                                {project.phase || t("projects.project")}
                             </span>
                         </div>
-                        <div className="flex justify-between items-start">
+                        <div className="flex justify-between items-start gap-4">
                             <h1 className="font-headline-lg text-on-surface text-3xl md:text-4xl font-bold leading-tight">
                                 {project.title}
                             </h1>
-                            <span className="material-symbols-outlined text-secondary text-2xl flex-shrink-0 ml-4">
-                                {project.icon}
-                            </span>
+                            {project.icon && (
+                                <span className="material-symbols-outlined text-secondary text-2xl shrink-0">
+                                    {project.icon}
+                                </span>
+                            )}
                         </div>
                     </div>
 
-                    {/* Tags */}
+                    {/* Repository Stats */}
+                    {project.stats && (
+                        <div className="flex flex-wrap gap-4 items-center border-t border-b border-outline-variant/30 py-3 text-xs text-on-surface-variant">
+                            <span className="flex items-center gap-1">
+                                <span className="material-symbols-outlined text-sm text-secondary">star</span>
+                                <strong>{project.stats.stars}</strong> {t("projects.stars")}
+                            </span>
+                            <span className="flex items-center gap-1">
+                                <span className="material-symbols-outlined text-sm text-secondary">fork_left</span>
+                                <strong>{project.stats.forks}</strong> {t("projects.forks")}
+                            </span>
+                            <span className="flex items-center gap-1">
+                                <span className="material-symbols-outlined text-sm text-secondary">code</span>
+                                <strong>{project.stats.language}</strong>
+                            </span>
+                        </div>
+                    )}
+
+                    {/* Technology Tags */}
                     {project.tags && project.tags.length > 0 && (
                         <div className="flex flex-wrap gap-2">
                             {project.tags.map((tag, i) => (
@@ -86,62 +126,131 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                         </div>
                     )}
 
-                    {/* Description */}
-                    {project.description && (
-                        <p className="font-body-lg text-on-surface-variant text-base leading-relaxed">
-                            {project.description}
-                        </p>
-                    )}
-                    {project.descriptionExtended && (
-                        <p className="font-body-lg text-on-surface-variant/70 text-sm leading-relaxed">
-                            {project.descriptionExtended}
-                        </p>
+                    {/* Description Paragraphs */}
+                    {(project.description || project.descriptionExtended) && (
+                        <div className="flex flex-col gap-4">
+                            {project.description && (
+                                <p className="font-body-lg text-on-surface-variant text-base leading-relaxed">
+                                    {project.description}
+                                </p>
+                            )}
+                            {project.descriptionExtended && (
+                                <p className="font-body-lg text-on-surface-variant/70 text-sm leading-relaxed">
+                                    {project.descriptionExtended}
+                                </p>
+                            )}
+                        </div>
                     )}
 
-                    {/* Metrics */}
+                    {/* System Architecture TechStack Grid */}
+                    {project.techStack && project.techStack.length > 0 && (
+                        <div className="flex flex-col gap-3">
+                            <h3 className="text-xs text-on-surface-variant uppercase tracking-wider font-bold">
+                                {t("projects.systemArchitecture")}
+                            </h3>
+                            <div className="grid grid-cols-2 gap-3">
+                                {project.techStack.map((tech, i) => (
+                                    <div
+                                        key={i}
+                                        className="flex items-center gap-3 p-3 rounded-lg border border-outline-variant/30 bg-surface-container-low/20"
+                                    >
+                                        {tech.icon && (
+                                            <span className="material-symbols-outlined text-secondary text-lg shrink-0">
+                                                {tech.icon}
+                                            </span>
+                                        )}
+                                        <div>
+                                            <p className="text-xs font-bold text-white leading-none mb-1">{tech.name}</p>
+                                            <p className="text-[10px] text-on-surface-variant/70 leading-none">{tech.role}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Performance Metrics */}
                     {project.metrics && (
                         <div className="grid grid-cols-2 gap-4 p-4 border border-outline-variant/30 rounded-lg bg-surface-container-low/30">
                             <div>
-                                <p className="text-xs text-on-surface-variant uppercase tracking-wider mb-1">Performance</p>
+                                <p className="text-xs text-on-surface-variant uppercase tracking-wider mb-1">{t("projects.performance")}</p>
                                 <p className="text-secondary font-bold text-lg">{project.metrics.performance}</p>
                             </div>
                             <div>
-                                <p className="text-xs text-on-surface-variant uppercase tracking-wider mb-1">Uptime</p>
+                                <p className="text-xs text-on-surface-variant uppercase tracking-wider mb-1">{t("projects.uptime")}</p>
                                 <p className="text-secondary font-bold text-lg">{project.metrics.uptime}</p>
                             </div>
                         </div>
                     )}
 
-                    {/* Action Buttons */}
+                    {/* CTA Action Buttons */}
                     <div className="flex flex-col gap-3 pt-2">
-                        <a
-                            href={project.liveLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full py-3 border border-secondary/20 text-secondary font-label-md uppercase tracking-widest hover:bg-secondary/10 transition-all flex justify-between items-center px-4 rounded-lg group/btn active:scale-[0.98]"
-                        >
-                            Live Link
-                            <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
-                                arrow_forward
-                            </span>
-                        </a>
+                        {project.liveLink && (
+                            <a
+                                href={project.liveLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full py-3 border border-secondary/20 text-secondary font-label-md uppercase tracking-widest hover:bg-secondary/10 transition-all flex justify-between items-center px-4 rounded-lg group/btn active:scale-[0.98]"
+                            >
+                                {t("projects.liveLink")}
+                                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
+                                    arrow_forward
+                                </span>
+                            </a>
+                        )}
 
-                        <a
-                            href={project.githubLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full py-3 border border-secondary/20 text-secondary font-label-md uppercase tracking-widest hover:bg-secondary/10 transition-all flex justify-between items-center px-4 rounded-lg group/btn active:scale-[0.98]"
-                        >
-                            GitHub Repo
-                            <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
-                                arrow_forward
-                            </span>
-                        </a>
+                        {project.githubLink && (
+                            <a
+                                href={project.githubLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full py-3 border border-secondary/20 text-secondary font-label-md uppercase tracking-widest hover:bg-secondary/10 transition-all flex justify-between items-center px-4 rounded-lg group/btn active:scale-[0.98]"
+                            >
+                                {t("projects.githubRepo")}
+                                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
+                                    arrow_forward
+                                </span>
+                            </a>
+                        )}
                     </div>
-
                 </motion.div>
-            </div >
+            </div>
 
-        </main >
+            {/* Bottom Pagination / Project Navigation */}
+            {prevProject && nextProject && (
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="mt-20 pt-8 border-t border-outline-variant/30 flex justify-between items-center gap-4"
+                >
+                    <Link
+                        href={`/project/${prevProject.id}`}
+                        className="flex flex-col items-start gap-1 p-4 border border-outline-variant/30 rounded-xl hover:bg-secondary/5 transition-all text-left flex-1 max-w-70 group"
+                    >
+                        <span className="text-[9px] uppercase tracking-widest text-on-surface-variant/70">
+                            {t("projects.previousProject")}
+                        </span>
+                        <span className="text-secondary font-bold text-sm flex items-center gap-1.5 group-hover:-translate-x-1 transition-transform duration-300">
+                            <span className="material-symbols-outlined text-sm">arrow_back</span>
+                            {prevProject.title}
+                        </span>
+                    </Link>
+
+                    <Link
+                        href={`/project/${nextProject.id}`}
+                        className="flex flex-col items-end gap-1 p-4 border border-outline-variant/30 rounded-xl hover:bg-secondary/5 transition-all text-right flex-1 max-w-70 group"
+                    >
+                        <span className="text-[9px] uppercase tracking-widest text-on-surface-variant/70">
+                            {t("projects.nextProject")}
+                        </span>
+                        <span className="text-secondary font-bold text-sm flex items-center gap-1.5 group-hover:translate-x-1 transition-transform duration-300">
+                            {nextProject.title}
+                            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                        </span>
+                    </Link>
+                </motion.div>
+            )}
+        </main>
     );
 }

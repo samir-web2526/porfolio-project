@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, Variants, useScroll, useTransform } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import profileImg from "@/app/assets/images/profile.png";
+import profileImg from "@/assets/images/about.png";
+import { useTranslation } from "react-i18next";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -25,6 +26,8 @@ const itemVariants: Variants = {
 };
 
 export default function AboutSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="pt-32 pb-24 px-4 md:px-6 max-w-[1280px] mx-auto relative z-10" id="about">
       <div className="flex flex-col items-center mb-16">
@@ -34,8 +37,8 @@ export default function AboutSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="flex items-center gap-3 mb-4"
         >
-          <span className="h-[1px] w-8 bg-secondary"></span>
-          <span className="text-secondary font-label-md uppercase tracking-[0.3em] text-xs">Intro</span>
+          <span className="h-px w-8 bg-secondary"></span>
+          <span className="text-secondary font-label-md uppercase tracking-[0.3em] text-xs">{t("about.intro")}</span>
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -44,7 +47,7 @@ export default function AboutSection() {
           transition={{ delay: 0.1 }}
           className="font-headline-lg text-5xl md:text-6xl text-white font-bold"
         >
-          About <span className="text-secondary">Me</span>
+          {t("about.about")} <span className="text-secondary">{t("about.me")}</span>
         </motion.h1>
       </div>
 
@@ -62,9 +65,9 @@ export default function AboutSection() {
           <div className="absolute -bottom-4 -right-4 w-24 h-24 border-r-2 border-b-2 border-secondary/40 rounded-br-xl transition-all duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
 
           <div className="relative overflow-hidden rounded-xl border border-secondary/20 shadow-2xl bg-surface-container-low p-2">
-            <div className="relative w-full aspect-[4/5]">
+            <div className="relative w-full aspect-4/5">
               <Image
-                alt="Samir Baishnab Portrait"
+                alt={t("about.portraitAlt")}
                 src={profileImg}
                 fill
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out rounded-lg"
@@ -84,36 +87,36 @@ export default function AboutSection() {
           className="lg:col-span-7 space-y-10"
         >
           <motion.header variants={itemVariants}>
-            <h2 className="font-headline-lg text-4xl text-white mb-6 font-bold">Samir Baishnab</h2>
+            <h2 className="font-headline-lg text-4xl text-white mb-6 font-bold">{t("about.name")}</h2>
             <p className="font-body-lg text-on-surface-variant leading-relaxed text-lg">
-              Hello! I'm <span className="text-secondary font-medium">Samir Baishnab</span>, a Fullstack Expert Web Developer with a passion for building robust digital solutions. I am experienced with all stages of the development cycle for dynamic web projects, including advanced HTML5, CSS3, JavaScript, jQuery, and Modern Frameworks.
+              {t("about.hello")}<span className="text-secondary font-medium">{t("about.name")}</span>{t("about.aboutText")}
             </p>
           </motion.header>
 
           {/* Education / Academic Path */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <span className="text-on-surface-variant/50 font-label-md uppercase tracking-widest text-xs">Academic Path</span>
-              <div className="h-[1px] flex-grow bg-outline-variant/30"></div>
+              <span className="text-on-surface-variant/50 font-label-md uppercase tracking-widest text-xs">{t("about.academicPath")}</span>
+              <div className="h-px grow bg-outline-variant/30"></div>
             </div>
             <div className="space-y-4 relative">
               {/* Vertical Timeline Glow Line */}
-              <div className="absolute left-[13px] top-2 bottom-2 w-0.5 timeline-line opacity-50"></div>
+              <div className="absolute left-3.25 top-2 bottom-2 w-0.5 timeline-line opacity-50"></div>
 
               {/* Undergraduate Item */}
               <div className="education-card animate-stagger-1 flex gap-6 p-4 rounded-xl border border-transparent">
                 <div className="relative z-10 flex flex-col items-center pt-2">
                   <div className="timeline-dot w-3 h-3 rounded-full bg-secondary shadow-[0_0_10px_rgba(65,228,192,0.4)] transition-all duration-300"></div>
                 </div>
-                <div className="flex-grow">
+                <div className="grow">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                    <h3 className="font-headline-md text-lg text-primary-fixed-dim font-bold">Undergraduate (Honours)</h3>
+                    <h3 className="font-headline-md text-lg text-primary-fixed-dim font-bold">{t("about.undergraduate")}</h3>
                     <span className="tech-badge px-3 py-1 text-[11px] rounded text-secondary font-semibold uppercase">
-                      [2021 — Running]
+                      {t("about.undergradPeriod")}
                     </span>
                   </div>
-                  <p className="text-sm text-on-surface-variant leading-relaxed mb-1">Jamalpur Science and Technology University (CSE)</p>
-                  <p className="text-xs text-on-surface-variant/50 font-code-sm italic">Computer Science and Engineering</p>
+                  <p className="text-sm text-on-surface-variant leading-relaxed mb-1">{t("about.undergradSchool")}</p>
+                  <p className="text-xs text-on-surface-variant/50 font-code-sm italic">{t("about.undergradMajor")}</p>
                 </div>
               </div>
 
@@ -122,15 +125,15 @@ export default function AboutSection() {
                 <div className="relative z-10 flex flex-col items-center pt-2">
                   <div className="timeline-dot w-3 h-3 rounded-full border-2 border-secondary/60 bg-background transition-all duration-300"></div>
                 </div>
-                <div className="flex-grow">
+                <div className="grow">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                    <h3 className="font-headline-md text-lg text-primary-fixed-dim font-bold">Higher Secondary (HSC)</h3>
+                    <h3 className="font-headline-md text-lg text-primary-fixed-dim font-bold">{t("about.hsc")}</h3>
                     <span className="tech-badge px-3 py-1 text-[11px] rounded text-on-surface-variant/70 border-outline-variant/30 font-semibold uppercase">
-                      [2017 — 2019]
+                      {t("about.hscPeriod")}
                     </span>
                   </div>
-                  <p className="text-sm text-on-surface-variant leading-relaxed mb-1">Sylhet Govt College, Sylhet</p>
-                  <p className="text-xs text-on-surface-variant/50 font-code-sm italic">Science Major</p>
+                  <p className="text-sm text-on-surface-variant leading-relaxed mb-1">{t("about.hscSchool")}</p>
+                  <p className="text-xs text-on-surface-variant/50 font-code-sm italic">{t("about.hscMajor")}</p>
                 </div>
               </div>
 
@@ -139,45 +142,45 @@ export default function AboutSection() {
                 <div className="relative z-10 flex flex-col items-center pt-2">
                   <div className="timeline-dot w-3 h-3 rounded-full border-2 border-secondary/60 bg-background transition-all duration-300"></div>
                 </div>
-                <div className="flex-grow">
+                <div className="grow">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                    <h3 className="font-headline-md text-lg text-primary-fixed-dim font-bold">Secondary School (SSC)</h3>
+                    <h3 className="font-headline-md text-lg text-primary-fixed-dim font-bold">{t("about.ssc")}</h3>
                     <span className="tech-badge px-3 py-1 text-[11px] rounded text-on-surface-variant/70 border-outline-variant/30 font-semibold uppercase">
-                      [2015 — 2017]
+                      {t("about.sscPeriod")}
                     </span>
                   </div>
-                  <p className="text-sm text-on-surface-variant leading-relaxed mb-1">Govt Jubilee High School, Sunamganj</p>
-                  <p className="text-xs text-on-surface-variant/50 font-code-sm italic">Science Major</p>
+                  <p className="text-sm text-on-surface-variant leading-relaxed mb-1">{t("about.sscSchool")}</p>
+                  <p className="text-xs text-on-surface-variant/50 font-code-sm italic">{t("about.sscMajor")}</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Interests.json Section */}
-          <motion.div variants={itemVariants} className="glass-card rounded-xl p-6 border border-secondary/10">
+          {/* <motion.div variants={itemVariants} className="glass-card rounded-xl p-6 border border-secondary/10">
             <div className="flex items-center gap-3 mb-6">
               <div className="flex gap-1.5">
                 <div className="w-2 h-2 rounded-full bg-secondary"></div>
                 <div className="w-2 h-2 rounded-full bg-secondary/60"></div>
               </div>
-              <span className="text-[10px] font-code-sm text-on-surface-variant/40 tracking-[0.2em] uppercase">Interests.json</span>
+              <span className="text-[10px] font-code-sm text-on-surface-variant/40 tracking-[0.2em] uppercase">{t("about.interestsJson")}</span>
             </div>
             <div className="flex flex-wrap gap-4">
               <span className="flex items-center gap-2 px-4 py-2 border border-secondary/20 rounded-lg text-secondary text-sm font-label-md hover:bg-secondary/10 transition-colors cursor-default">
                 <span className="material-symbols-outlined text-lg">sports_soccer</span>
-                Sporting
+                {t("about.sporting")}
               </span>
               <span className="flex items-center gap-2 px-4 py-2 border border-secondary/20 rounded-lg text-secondary text-sm font-label-md hover:bg-secondary/10 transition-colors cursor-default">
                 <span className="material-symbols-outlined text-lg">flight_takeoff</span>
-                Travelling
+                {t("about.travelling")}
               </span>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* CTA */}
           <motion.div variants={itemVariants}>
             <button className="flex items-center gap-3 px-8 py-3.5 border border-secondary/30 rounded-lg text-secondary font-label-md text-sm hover:bg-secondary/10 transition-all duration-300 group">
-              Learn More
+              {t("about.learnMore")}
               <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </button>
           </motion.div>

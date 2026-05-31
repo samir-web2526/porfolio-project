@@ -4,15 +4,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PanelLeft, Sun, Moon, PanelLeftClose } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import profileImg from "@/app/assets/images/profile.png";
+import { useTranslation } from "react-i18next";
 
 export default function SideNavBar() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(true);
   const [isDark, setIsDark] = useState(true);
 
   // Initialize theme on mount
   useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains("dark");
-    setIsDark(isDarkMode);
+    requestAnimationFrame(() => {
+      setIsDark(isDarkMode);
+    });
   }, []);
 
   const toggleTheme = () => {
@@ -42,7 +47,7 @@ export default function SideNavBar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-on-surface/40 hover:bg-white/5 hover:text-secondary transition-all duration-200 ease-in-out p-3 rounded-lg cursor-pointer"
-            title="Toggle Sidebar"
+            title={t("sidebar.toggleSidebar")}
           >
             <PanelLeftClose size={24} />
           </button>
@@ -51,7 +56,7 @@ export default function SideNavBar() {
           <button
             onClick={toggleTheme}
             className="text-on-surface/40 hover:bg-white/5 hover:text-secondary transition-all duration-200 ease-in-out p-3 rounded-lg cursor-pointer"
-            title="Toggle Theme"
+            title={t("sidebar.toggleTheme")}
           >
             {isDark ? <Sun size={24} /> : <Moon size={24} />}
           </button>
@@ -60,10 +65,11 @@ export default function SideNavBar() {
         <div className="mt-auto">
           <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 relative">
             <Image
-              alt="Samir Baishnab Profile"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAszA11bGy7ledlbsloyN3iY7ED3Xq6Wu44Ewyfh9ggxwhOoUyV3h69aKw-N1d9jWYfSXzTdWbWcMljLB0LR1YAjg7fkacpaWhaDWVu386UvgXLZmmvdn8EZW1fSj3FolkCV1wnKFLpxeEerzTx5cX88WBRxYyLuNOXxPymqZg0h0nUgUWl0BzG3kIKJbMSerZI0HUZVNyHSqMIedKeLNICKaBggjCYTgzGXCsLMY20_dSgvsg2WSPWlcM-obVbuPt_62k2nejaHvA"
+              alt={t("sidebar.profileAlt")}
+              src={profileImg}
               fill
               className="object-cover"
+              sizes="40px"
             />
           </div>
         </div>
@@ -91,7 +97,7 @@ export default function SideNavBar() {
           className="text-on-surface/60 hover:text-secondary p-2 flex flex-col items-center gap-1"
         >
           {isDark ? <Sun size={24} /> : <Moon size={24} />}
-          <span className="text-[10px] uppercase font-bold tracking-tighter">Theme</span>
+          <span className="text-[10px] uppercase font-bold tracking-tighter">{t("sidebar.theme")}</span>
         </button>
 
         {/* For mobile, sidebar toggle might not be as useful, but keeping it as a functional button as requested */}
@@ -100,7 +106,7 @@ export default function SideNavBar() {
           disabled
         >
           <PanelLeft size={24} />
-          <span className="text-[10px] uppercase font-bold tracking-tighter">Menu</span>
+          <span className="text-[10px] uppercase font-bold tracking-tighter">{t("sidebar.menu")}</span>
         </button>
       </div>
     </>

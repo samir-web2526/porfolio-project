@@ -5,6 +5,7 @@ import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import TopNavBar from "@/components/TopNavBar";
 import SideNavBar from "@/components/SideNavBar";
 import Footer from "@/components/Footer";
+import I18nProvider from "@/components/I18nProvider";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -34,18 +35,20 @@ export default function RootLayout({
       <head>
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=optional"
         />
       </head>
       <body className="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden min-h-screen flex flex-col relative">
-        <SmoothScrollProvider>
-          <TopNavBar />
-          <SideNavBar />
-          <main className="min-h-screen grid-pattern pt-20 lg:pl-20 bg-background relative z-10">
-            {children}
-          </main>
-          <Footer />
-        </SmoothScrollProvider>
+        <I18nProvider>
+          <SmoothScrollProvider>
+            <TopNavBar />
+            <SideNavBar />
+            <main className="min-h-screen grid-pattern pt-20 lg:pl-20 bg-background relative z-10">
+              {children}
+            </main>
+            <Footer />
+          </SmoothScrollProvider>
+        </I18nProvider>
       </body>
     </html>
   );

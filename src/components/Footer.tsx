@@ -1,6 +1,9 @@
+"use client";
+
 import NextLink from "next/link";
 import Image from "next/image";
 import logoImg from "@/app/assets/images/logo.png";
+import { useTranslation } from "react-i18next";
 
 // Custom SVG Icons for brands since they are missing in this Lucide version
 const FacebookIcon = ({ size = 20 }: { size?: number }) => (
@@ -20,19 +23,21 @@ const LinkedinIcon = ({ size = 20 }: { size?: number }) => (
 );
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Me", href: "/about" },
-    { name: "Projects", href: "/project" },
-    { name: "Skills", href: "/skills" },
-    { name: "Contact", href: "/contact" },
+    { name: t("nav.home"), href: "/" },
+    { name: t("nav.about"), href: "/about" },
+    { name: t("nav.projects"), href: "/project" },
+    { name: t("nav.skills"), href: "/skills" },
+    { name: t("nav.contact"), href: "/contact" },
   ];
 
   const socialLinks = [
-    { name: "Facebook", icon: <FacebookIcon size={20} />, href: "#" },
-    { name: "Instagram", icon: <InstagramIcon size={20} />, href: "#" },
-    { name: "Twitter", icon: <TwitterIcon size={20} />, href: "#" },
-    { name: "LinkedIn", icon: <LinkedinIcon size={20} />, href: "#" },
+    { name: t("footer.facebook"), icon: <FacebookIcon size={20} />, href: "#" },
+    { name: t("footer.instagram"), icon: <InstagramIcon size={20} />, href: "#" },
+    { name: t("footer.twitter"), icon: <TwitterIcon size={20} />, href: "#" },
+    { name: t("footer.linkedin"), icon: <LinkedinIcon size={20} />, href: "#" },
   ];
 
   return (
@@ -46,16 +51,17 @@ export default function Footer() {
               alt="SAMIR BAISHNAB Logo"
               fill
               className="object-contain"
+              sizes="64px"
             />
           </NextLink>
           <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed w-full">
-            Fullstack engineer specializing in architectural depth and digital clarity. Crafting performant systems within the midnight void of modern technology.
+            {t("footer.footerDesc")}
           </p>
         </div>
 
         {/* Column 2: Navigation */}
         <div className="flex flex-col space-y-6">
-          <h3 className="text-on-surface font-bold uppercase tracking-widest text-xs">Quick Links</h3>
+          <h3 className="text-on-surface font-bold uppercase tracking-widest text-xs">{t("footer.quickLinks")}</h3>
           <nav className="flex flex-col space-y-3">
             {quickLinks.map((link) => (
               <NextLink
@@ -71,21 +77,21 @@ export default function Footer() {
 
         {/* Column 3: Social & Interaction */}
         <div className="flex flex-col space-y-6">
-          <h3 className="text-on-surface font-bold uppercase tracking-widest text-xs">Connect</h3>
+          <h3 className="text-on-surface font-bold uppercase tracking-widest text-xs">{t("footer.connect")}</h3>
           <div className="flex gap-4">
             {socialLinks.map((link) => (
               <NextLink
                 key={link.name}
                 aria-label={link.name}
                 href={link.href}
-                className="w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/10 hover:shadow-[0_0_15px_rgba(65,228,192,0.4)] hover:-translate-y-[2px] transition-all duration-300 bg-surface-container-low"
+                className="w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/10 hover:shadow-[0_0_15px_rgba(65,228,192,0.4)] hover:-translate-y-0.5 transition-all duration-300 bg-surface-container-low"
               >
                 {link.icon}
               </NextLink>
             ))}
           </div>
           <div className="mt-4">
-            <div className="h-1 w-24 bg-gradient-to-r from-secondary to-transparent rounded-full opacity-50"></div>
+            <div className="h-1 w-24 bg-linear-to-r from-secondary to-transparent rounded-full opacity-50"></div>
           </div>
         </div>
       </div>
@@ -94,7 +100,7 @@ export default function Footer() {
       <div className="w-full border-t border-outline-variant py-8">
         <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="font-body-md text-xs w-full text-center text-on-surface-variant/60 tracking-wider">
-            © {new Date().getFullYear()} Samir Baishnab. Architect of the Digital Void.
+            © {new Date().getFullYear()}{t("footer.copyright")}
           </p>
         </div>
       </div>

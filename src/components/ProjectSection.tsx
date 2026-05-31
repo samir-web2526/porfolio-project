@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/lib/projectData";
+import { useTranslation } from "react-i18next";
 
 export default function ProjectSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="pt-32 pb-20 px-6 max-w-[1280px] mx-auto relative z-10" id="projects">
       {/* Section Header */}
@@ -16,8 +19,8 @@ export default function ProjectSection() {
           viewport={{ once: true }}
           className="flex items-center gap-3 mb-4"
         >
-          <span className="h-[1px] w-12 bg-secondary"></span>
-          <span className="font-label-md text-secondary uppercase tracking-[0.2em] text-xs">Deployment Archive</span>
+          <span className="h-px w-12 bg-secondary"></span>
+          <span className="font-label-md text-secondary uppercase tracking-[0.2em] text-xs">{t("projects.deploymentArchive")}</span>
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +29,7 @@ export default function ProjectSection() {
           transition={{ delay: 0.1 }}
           className="font-headline-lg text-on-surface leading-none mb-6 text-4xl md:text-5xl lg:text-6xl font-bold"
         >
-          PROJECT_GALLERY
+          {t("projects.projectGallery")}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -35,7 +38,7 @@ export default function ProjectSection() {
           transition={{ delay: 0.2 }}
           className="font-body-lg text-on-surface-variant max-w-2xl text-lg"
         >
-          A curated selection of architectural blueprints and full-stack implementations.
+          {t("projects.projectDesc")}
         </motion.p>
       </div>
 
@@ -57,12 +60,13 @@ export default function ProjectSection() {
                 alt={project.title}
                 fill
                 className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent opacity-60" />
             </div>
 
             {/* Content */}
-            <div className="p-6 flex flex-col flex-grow">
+            <div className="p-6 flex flex-col grow">
               {/* Title */}
               <h3 className="font-headline-md text-on-surface text-xl group-hover:text-secondary transition-colors font-bold mb-6">
                 {project.title}
@@ -74,7 +78,7 @@ export default function ProjectSection() {
                   href={`/project/${project.id}`}
                   className="w-full py-3 border border-secondary/20 text-secondary font-label-md uppercase tracking-widest hover:bg-secondary/10 transition-all flex justify-between items-center px-4 rounded-lg group/btn active:scale-[0.98]"
                 >
-                  View Details
+                  {t("projects.viewDetails")}
                   <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
                     arrow_forward
                   </span>

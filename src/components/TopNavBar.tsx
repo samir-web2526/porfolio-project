@@ -10,17 +10,19 @@ import { usePathname } from "next/navigation";
 
 import Image from "next/image";
 import logoImg from "@/app/assets/images/logo.png";
+import { useTranslation } from "react-i18next";
 
 export default function TopNavBar() {
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   const links = [
-    { name: "Home", href: "/" },
-    { name: "About Me", href: "/about" },
-    { name: "Projects", href: "/project" },
-    { name: "Skills", href: "/skills" },
-    { name: "Contact", href: "/contact" },
+    { name: t("nav.home"), href: "/" },
+    { name: t("nav.about"), href: "/about" },
+    { name: t("nav.projects"), href: "/project" },
+    { name: t("nav.skills"), href: "/skills" },
+    { name: t("nav.contact"), href: "/contact" },
   ];
 
   return (
@@ -38,6 +40,8 @@ export default function TopNavBar() {
             fill
             className="object-contain"
             priority
+            loading="eager"
+            sizes="(max-width: 768px) 48px, 56px"
           />
         </Link>
 
@@ -60,7 +64,7 @@ export default function TopNavBar() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`font-headline-md tracking-tight text-base md:text-sm font-medium transition-colors ${isActive
                   ? "text-secondary md:border-b-2 border-secondary md:pb-1"
-                  : "text-on-surface/70 hover:text-on-surface hover:text-secondary"
+                  : "text-on-surface/70 hover:text-secondary"
                   }`}
               >
                 {link.name}
@@ -68,12 +72,12 @@ export default function TopNavBar() {
             );
           })}
           <Button className="md:hidden w-full bg-secondary-container text-on-secondary-container font-label-md px-6 py-4 rounded-xl hover:bg-secondary-fixed transition-all duration-300 border-0 h-auto">
-            Hire Me
+            {t("nav.hireMe")}
           </Button>
         </div>
 
         <Button className="hidden md:block bg-secondary-container text-on-secondary-container font-label-md px-6 py-2 rounded-xl hover:bg-secondary-fixed transition-all duration-300 blue-glow active:scale-95 border-0">
-          Hire Me
+          {t("nav.hireMe")}
         </Button>
       </div>
     </motion.nav>
