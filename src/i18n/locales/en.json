@@ -9,9 +9,9 @@
   },
   "hero": {
     "availableForProjects": "Available for New Projects",
-    "architecting": "Building ",
-    "scalable": "Scalable",
-    "fullstackSolutions": " Full-Stack Solutions",
+    "architecting": "From Zero ",
+    "scalable": "To",
+    "fullstackSolutions": " Deployed.",
 
     "imSamirA": "I'm Samir, a ",
 
@@ -111,7 +111,7 @@
     "letsBuildThe": "Have something in mind? ",
     "future": "Let's talk",
     "dot": ".",
-    "contactDesc": "I'm available for collaborations, consulting, and building products worth using. Drop me a message — I read everything.",
+    "contactDesc": "Currently looking for work and open to collaborations. Send me a message — I respond fast.",
     "submitInfo": "Submit Your Information",
     "nameLabel": "Name",
     "namePlaceholder": "Your Name",
@@ -144,7 +144,7 @@
     }
   },
   "footer": {
-    "footerDesc": "Fullstack engineer specializing in architectural depth and digital clarity. Crafting performant systems within the midnight void of modern technology.",
+    "footerDesc": "CSE student. Fullstack developer. The kind of person who reads error logs for fun.",
     "quickLinks": "Quick Links",
     "connect": "Connect",
     "copyright": " Samir Baishnab. Architect of the Digital Void.",

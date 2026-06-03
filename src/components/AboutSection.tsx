@@ -5,6 +5,7 @@ import Image from "next/image";
 import profileImg from "@/assets/images/about.png";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { User, ChevronDown, Terminal, Plane, Goal, Rocket } from "lucide-react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -88,7 +89,7 @@ export default function AboutSection() {
           className="lg:col-span-7 space-y-10"
         >
           <motion.header variants={itemVariants}>
-            <h2 className="font-headline-lg text-4xl text-white mb-6 font-bold">{t("about.name")}</h2>
+            <h2 className="font-headline-lg text-4xl text-on-surface mb-6 font-bold">{t("about.name")}</h2>
             <p className="font-body-lg text-on-surface-variant leading-relaxed text-lg">
               {t("about.hello")}
               <span className="text-secondary font-medium">{t("about.name")}</span>
@@ -99,7 +100,7 @@ export default function AboutSection() {
           {/* Education */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <span className="text-on-surface-variant/50 font-label-md uppercase tracking-widest text-xs">{t("about.academicPath")}</span>
+              <span className="text-on-surface-variant/50 font-label-md tracking-widest text-xs">{t("about.academicPath")}</span>
               <div className="h-px grow bg-outline-variant/30" />
             </div>
             <div className="space-y-4 relative">
@@ -157,14 +158,13 @@ export default function AboutSection() {
               onClick={() => setShowMore((prev) => !prev)}
               className="flex items-center gap-3 px-8 py-3.5 bg-secondary/10 border border-secondary/40 rounded-lg text-secondary font-label-md text-sm hover:bg-secondary/20 hover:border-secondary/70 transition-all duration-300 group active:scale-95"
             >
-              <span className="material-symbols-outlined text-lg">person</span>
+              <User size={18} />
               {showMore ? "Show Less" : "More About Me"}
-              <span
-                className="material-symbols-outlined transition-transform duration-300"
+              <ChevronDown
+                size={18}
+                className="transition-transform duration-300"
                 style={{ transform: showMore ? "rotate(180deg)" : "rotate(0deg)" }}
-              >
-                expand_more
-              </span>
+              />
             </button>
           </motion.div>
 
@@ -187,27 +187,23 @@ export default function AboutSection() {
                   className="glass-card rounded-xl p-6 border border-secondary/10"
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="flex gap-1.5">
-                      <div className="w-2 h-2 rounded-full bg-secondary"></div>
-                      <div className="w-2 h-2 rounded-full bg-secondary/60"></div>
-                    </div>
-                    <span className="text-[10px] font-code-sm text-on-surface-variant/40 tracking-[0.2em] uppercase">{t("about.interestsJson")}</span>
+                    <span className="text-[10px] font-code-sm text-on-surface-variant/40 tracking-[0.2em]">{t("about.interestsJson")}</span>
                   </div>
                   <div className="flex flex-wrap gap-4">
                     <span className="flex items-center gap-2 px-4 py-2 border border-secondary/20 rounded-lg text-secondary text-sm font-label-md hover:bg-secondary/10 transition-colors cursor-default">
-                      <span className="material-symbols-outlined text-lg">terminal</span>
+                      <Terminal size={16} />
                       I enjoy solving complex problems
                     </span>
                     <span className="flex items-center gap-2 px-4 py-2 border border-secondary/20 rounded-lg text-secondary text-sm font-label-md hover:bg-secondary/10 transition-colors cursor-default">
-                      <span className="material-symbols-outlined text-lg">flight_takeoff</span>
+                      <Plane size={16} />
                       I love discovering new cultures
                     </span>
                     <span className="flex items-center gap-2 px-4 py-2 border border-secondary/20 rounded-lg text-secondary text-sm font-label-md hover:bg-secondary/10 transition-colors cursor-default">
-                      <span className="material-symbols-outlined text-lg">sports_soccer</span>
+                      <Goal size={16} />
                       Football is my favourite sport
                     </span>
                     <span className="flex items-center gap-2 px-4 py-2 border border-secondary/20 rounded-lg text-secondary text-sm font-label-md hover:bg-secondary/10 transition-colors cursor-default">
-                      <span className="material-symbols-outlined text-lg">rocket_launch</span>
+                      <Rocket size={16} />
                       Always learning new technologies
                     </span>
                   </div>

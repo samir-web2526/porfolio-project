@@ -285,10 +285,6 @@ export default function SkillsSection() {
             </svg>
           </div>
 
-          <span className="font-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">
-            {t("skills.systemCapabilities")}
-          </span>
-
           <h2 className="font-headline-lg text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-linear-to-r from-on-surface via-secondary to-on-surface bg-clip-text text-transparent">
             {t("skills.coreExpertise")}
           </h2>

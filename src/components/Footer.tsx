@@ -34,9 +34,9 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { name: t("footer.facebook"), icon: <FacebookIcon size={20} />, href: "#" },
-    { name: t("footer.instagram"), icon: <InstagramIcon size={20} />, href: "#" },
-    { name: t("footer.twitter"), icon: <TwitterIcon size={20} />, href: "#" },
+    { name: t("footer.facebook"), icon: <FacebookIcon size={20} />, href: "https://web.facebook.com/samir.baishnab.430316" },
+    { name: t("footer.instagram"), icon: <InstagramIcon size={20} />, href: "https://www.instagram.com/samir_dev2111/" },
+    { name: t("footer.twitter"), icon: <TwitterIcon size={20} />, href: "https://x.com/samir_dev2111" },
     { name: t("footer.linkedin"), icon: <LinkedinIcon size={20} />, href: "#" },
   ];
 
