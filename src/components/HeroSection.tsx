@@ -76,7 +76,7 @@ export default function HeroSection() {
     { value: t("hero.stats.yearsExperience"), label: t("hero.stats.codeExperience") },
     { value: t("hero.stats.completedProjects"), label: t("hero.stats.completedProjectsLabel") },
     { value: t("hero.stats.algorithmsSolved"), label: t("hero.stats.algorithmsSolvedLabel") },
-    { value: t("hero.stats.systemUptime"), label: t("hero.stats.systemUptimeLabel") },
+    { value: t("hero.stats.technologiesUsed"), label: t("hero.stats.technologiesUsedLabel") },
   ];
 
   return (
@@ -104,7 +104,7 @@ export default function HeroSection() {
 
         <motion.p
           variants={itemVariants}
-          className="text-on-surface-variant font-body-lg text-base md:text-lg max-w-[600px] mx-auto lg:mx-0"
+          className="text-on-surface-variant font-body-lg text-base md:text-lg max-w-150 mx-auto lg:mx-0"
         >
           {t("hero.heroDesc")}
         </motion.p>

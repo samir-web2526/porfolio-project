@@ -75,23 +75,32 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                     className="flex flex-col gap-6"
                 >
                     {/* Header: Phase & Title */}
-                    <div>
-                        <div className="flex items-center gap-3 mb-3">
+                    <div className="flex flex-col items-center text-center mb-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            className="flex items-center gap-3 mb-4"
+                        >
                             <span className="h-px w-8 bg-secondary" />
-                            <span className="font-label-md text-secondary uppercase tracking-[0.2em] text-xs">
+                            <span className="text-secondary font-label-md uppercase tracking-[0.3em] text-xs">
                                 {project.phase || t("projects.project")}
                             </span>
-                        </div>
-                        <div className="flex justify-between items-start gap-4">
-                            <h1 className="font-headline-lg text-on-surface text-3xl md:text-4xl font-bold leading-tight">
-                                {project.title}
-                            </h1>
+                        </motion.div>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ delay: 0.1 }}
+                            className="font-headline-lg text-5xl md:text-6xl text-white font-bold"
+                        >
+                            {project.title}
                             {project.icon && (
-                                <span className="material-symbols-outlined text-secondary text-2xl shrink-0">
+                                <span className="material-symbols-outlined text-secondary text-4xl ml-3 align-middle">
                                     {project.icon}
                                 </span>
                             )}
-                        </div>
+                        </motion.h1>
                     </div>
 
                     {/* Repository Stats */}

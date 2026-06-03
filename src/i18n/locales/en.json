@@ -9,33 +9,46 @@
   },
   "hero": {
     "availableForProjects": "Available for New Projects",
-    "architecting": "Architecting ",
+    "architecting": "Building ",
     "scalable": "Scalable",
-    "fullstackSolutions": " Fullstack Solutions",
+    "fullstackSolutions": " Full-Stack Solutions",
+
     "imSamirA": "I'm Samir, a ",
+
     "heroDesc": "I build scalable full-stack applications using React, Next.js, Node.js, PostgreSQL, Prisma, Docker, and Go, delivering seamless user experiences and high-performance backend systems.",
+
     "letsTalk": "Let's Talk",
     "downloadCv": "Download CV",
+
     "hiImSamir": "Hi, I'm Samir",
-    "fullstackExpert": "Fullstack Expert",
-    "yearsBuilding": "3+ Years Building",
-    "codeSolutions": "Code Solutions",
+
+    "fullstackExpert": "Full-Stack Developer",
+
+    "yearsBuilding": "3+ Years Learning & Building",
+
+    "codeSolutions": "Digital Solutions",
+
     "roles": {
-      "fullstackDeveloper": "Fullstack Developer",
-      "javascriptSpecialist": "JavaScript Specialist",
+      "fullstackDeveloper": "Full-Stack Developer",
+      "javascriptSpecialist": "JavaScript Developer",
       "csStudent": "Computer Science Student",
-      "problemSolver": "Creative Problem Solver"
+      "problemSolver": "Backend Enthusiast"
     },
+
     "stats": {
       "yearsExperience": "3+ Years",
-      "codeExperience": "Code Experience",
+      "codeExperience": "Learning & Building",
+
       "completedProjects": "15+",
-      "completedProjectsLabel": "Completed Projects",
-      "algorithmsSolved": "500+",
-      "algorithmsSolvedLabel": "Algorithms Solved",
-      "systemUptime": "99.9%",
-      "systemUptimeLabel": "System Uptime Goal"
+      "completedProjectsLabel": "Projects Completed",
+
+      "algorithmsSolved": "100+",
+      "algorithmsSolvedLabel": "Coding Problems Solved",
+
+      "technologiesUsed": "10+",
+      "technologiesUsedLabel": "Tech Stack"
     },
+
     "profileAlt": "Samir Baishnab"
   },
   "about": {
@@ -63,7 +76,7 @@
   },
   "projects": {
     "deploymentArchive": "Deployment Archive",
-    "projectGallery": "PROJECT_GALLERY",
+    "projectGallery": "Project Gallery",
     "projectDesc": "A curated selection of architectural blueprints and full-stack implementations.",
     "viewDetails": "View Details",
     "backToProjects": "Back to Projects",
@@ -95,11 +108,11 @@
   "contact": {
     "contact": "Contact ",
     "me": "Me",
-    "letsBuildThe": "Let's build the ",
-    "future": "future",
+    "letsBuildThe": "Have something in mind? ",
+    "future": "Let's talk",
     "dot": ".",
-    "contactDesc": "Currently architecting high-performance systems for the digital void. Open for collaborations, technical consulting, and innovative product development.",
-    "submitInfo": "Submit Your Info.",
+    "contactDesc": "I'm available for collaborations, consulting, and building products worth using. Drop me a message — I read everything.",
+    "submitInfo": "Submit Your Information",
     "nameLabel": "Name",
     "namePlaceholder": "Your Name",
     "emailLabel": "Email Address",
@@ -111,14 +124,15 @@
     "messagePlaceholder": "Type your message...",
     "sending": "Sending...",
     "sendMessage": "Send Message",
-    "messageSuccess": "Message Sent Successfully!",
-    "messageSuccessDesc": "The message was saved to Google Sheets.",
-    "submissionFailed": "Submission Failed",
-    "submissionFailedDesc": "Could not save message. Please try again.",
+    "messageSuccess": "Message Sent!",
+    "messageSuccessDesc": "Thanks for reaching out. I'll get back to you soon.",
+
+    "submissionFailed": "Something went wrong",
+    "submissionFailedDesc": "Your message couldn't be sent. Please try again or email me directly.",
     "email": "Email",
     "phone": "Phone",
     "stationedIn": "Stationed In",
-    "location": "Dhaka, Bangladesh",
+    "location": "Sylhet, Bangladesh",
     "allFieldsRequired": "All fields are required.",
     "validation": {
       "nameRequired": "Name is required.",

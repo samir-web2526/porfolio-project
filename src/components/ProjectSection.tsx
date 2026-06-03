@@ -10,37 +10,48 @@ export default function ProjectSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="pt-32 pb-20 px-6 max-w-[1280px] mx-auto relative z-10" id="projects">
+    <section
+      className="pt-32 pb-20 px-6 max-w-[1280px] mx-auto relative z-10"
+      id="projects"
+    >
       {/* Section Header */}
-      <div className="mb-16">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-3 mb-4"
-        >
-          <span className="h-px w-12 bg-secondary"></span>
-          <span className="font-label-md text-secondary uppercase tracking-[0.2em] text-xs">{t("projects.deploymentArchive")}</span>
-        </motion.div>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="font-headline-lg text-on-surface leading-none mb-6 text-4xl md:text-5xl lg:text-6xl font-bold"
-        >
+      <motion.header
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="mb-20 relative"
+      >
+        <div className="absolute -top-8 -left-6 w-48 h-48 opacity-10 pointer-events-none">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+            {Array.from({ length: 5 }).map((_, row) =>
+              Array.from({ length: 5 }).map((_, col) => (
+                <rect
+                  key={`${row}-${col}`}
+                  x={col * 42 + 2}
+                  y={row * 42 + 2}
+                  width="34"
+                  height="34"
+                  rx="4"
+                  className="stroke-secondary"
+                  strokeWidth="1"
+                  fill="none"
+                />
+              ))
+            )}
+          </svg>
+        </div>
+
+        <span className="font-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">
+          {t("projects.deploymentArchive")}
+        </span>
+
+        <h2 className="font-headline-lg text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-linear-to-r from-on-surface via-secondary to-on-surface bg-clip-text text-transparent">
           {t("projects.projectGallery")}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="font-body-lg text-on-surface-variant max-w-2xl text-lg"
-        >
-          {t("projects.projectDesc")}
-        </motion.p>
-      </div>
+        </h2>
+
+        <div className="h-0.5 w-32 bg-linear-to-r from-secondary via-secondary/50 to-transparent rounded-full" />
+      </motion.header>
 
       {/* Project Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
