@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/lib/projectData";
+import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export default function ProjectSection() {
@@ -86,9 +87,7 @@ export default function ProjectSection() {
                   className="w-full py-3 border border-secondary/20 text-secondary font-label-md uppercase tracking-widest hover:bg-secondary/10 transition-all flex justify-between items-center px-4 rounded-lg group/btn active:scale-[0.98]"
                 >
                   {t("projects.viewDetails")}
-                  <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
-                    arrow_forward
-                  </span>
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>

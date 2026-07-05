@@ -32,12 +32,6 @@ export default function RootLayout({
       lang="en"
       className={`dark ${spaceGrotesk.variable} ${inter.variable} antialiased`}
     >
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=optional"
-        />
-      </head>
       <body className="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden min-h-screen flex flex-col relative">
         <I18nProvider>
           <SmoothScrollProvider>

@@ -121,7 +121,7 @@ export default function HeroSection() {
             />
           </Link>
 
-          <Link href="#" className="text-secondary font-label-md flex items-center gap-2 hover:text-on-surface transition-colors group p-4 font-medium">
+          <Link href="https://drive.google.com/drive/u/0/folders/1lbAyeitnk_6_HUTdP4kbxzHBsayc7ppC" className="text-secondary font-label-md flex items-center gap-2 hover:text-on-surface transition-colors group p-4 font-medium">
             {t("hero.downloadCv")}
             <Download size={20} className="group-hover:rotate-45 transition-transform" />
           </Link>

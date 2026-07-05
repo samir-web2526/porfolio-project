@@ -5,7 +5,24 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/projectData";
+import { ArrowLeft, ArrowRight, Star, GitFork, Code, Hospital, School, Layers, Globe, GitBranch, Database, Network, Server } from "lucide-react";
 import { useTranslation } from "react-i18next";
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  local_hospital: Hospital,
+  school: School,
+  layers: Layers,
+  web: Globe,
+  hub: GitBranch,
+  storage: Database,
+  account_tree: Network,
+  dns: Server,
+  star: Star,
+  fork_left: GitFork,
+  code: Code,
+  arrow_forward: ArrowRight,
+  arrow_back: ArrowLeft,
+};
 
 interface Props {
     projectId: string;
@@ -40,7 +57,7 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                     href="/project"
                     className="inline-flex items-center gap-2 text-secondary font-label-md uppercase tracking-widest text-sm hover:gap-3 transition-all"
                 >
-                    <span className="material-symbols-outlined text-sm">arrow_back</span>
+                    <ArrowLeft className="w-4 h-4" />
                     {t("projects.backToProjects")}
                 </Link>
             </motion.div>
@@ -95,11 +112,10 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                             className="font-headline-lg text-5xl md:text-6xl text-white font-bold"
                         >
                             {project.title}
-                            {project.icon && (
-                                <span className="material-symbols-outlined text-secondary text-4xl ml-3 align-middle">
-                                    {project.icon}
-                                </span>
-                            )}
+                            {project.icon && (() => {
+                                const IconComponent = iconMap[project.icon];
+                                return IconComponent ? <IconComponent className="w-10 h-10 text-secondary ml-3 align-middle inline-block" /> : null;
+                            })()}
                         </motion.h1>
                     </div>
 
@@ -107,15 +123,15 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                     {project.stats && (
                         <div className="flex flex-wrap gap-4 items-center border-t border-b border-outline-variant/30 py-3 text-xs text-on-surface-variant">
                             <span className="flex items-center gap-1">
-                                <span className="material-symbols-outlined text-sm text-secondary">star</span>
+                                <Star className="w-4 h-4 text-secondary" />
                                 <strong>{project.stats.stars}</strong> {t("projects.stars")}
                             </span>
                             <span className="flex items-center gap-1">
-                                <span className="material-symbols-outlined text-sm text-secondary">fork_left</span>
+                                <GitFork className="w-4 h-4 text-secondary" />
                                 <strong>{project.stats.forks}</strong> {t("projects.forks")}
                             </span>
                             <span className="flex items-center gap-1">
-                                <span className="material-symbols-outlined text-sm text-secondary">code</span>
+                                <Code className="w-4 h-4 text-secondary" />
                                 <strong>{project.stats.language}</strong>
                             </span>
                         </div>
@@ -163,11 +179,10 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                                         key={i}
                                         className="flex items-center gap-3 p-3 rounded-lg border border-outline-variant/30 bg-surface-container-low/20"
                                     >
-                                        {tech.icon && (
-                                            <span className="material-symbols-outlined text-secondary text-lg shrink-0">
-                                                {tech.icon}
-                                            </span>
-                                        )}
+                                        {tech.icon && (() => {
+                                            const TechIcon = iconMap[tech.icon];
+                                            return TechIcon ? <TechIcon className="w-5 h-5 text-secondary shrink-0" /> : null;
+                                        })()}
                                         <div>
                                             <p className="text-xs font-bold text-white leading-none mb-1">{tech.name}</p>
                                             <p className="text-[10px] text-on-surface-variant/70 leading-none">{tech.role}</p>
@@ -202,9 +217,7 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                                 className="w-full py-3 border border-secondary/20 text-secondary font-label-md uppercase tracking-widest hover:bg-secondary/10 transition-all flex justify-between items-center px-4 rounded-lg group/btn active:scale-[0.98]"
                             >
                                 {t("projects.liveLink")}
-                                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
-                                    arrow_forward
-                                </span>
+                                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                             </a>
                         )}
 
@@ -216,9 +229,7 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                                 className="w-full py-3 border border-secondary/20 text-secondary font-label-md uppercase tracking-widest hover:bg-secondary/10 transition-all flex justify-between items-center px-4 rounded-lg group/btn active:scale-[0.98]"
                             >
                                 {t("projects.githubRepo")}
-                                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
-                                    arrow_forward
-                                </span>
+                                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                             </a>
                         )}
                     </div>
@@ -241,7 +252,7 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                             {t("projects.previousProject")}
                         </span>
                         <span className="text-secondary font-bold text-sm flex items-center gap-1.5 group-hover:-translate-x-1 transition-transform duration-300">
-                            <span className="material-symbols-outlined text-sm">arrow_back</span>
+                    <ArrowLeft className="w-4 h-4" />
                             {prevProject.title}
                         </span>
                     </Link>
@@ -255,7 +266,7 @@ export default function ProjectDetailsClient({ projectId }: Props) {
                         </span>
                         <span className="text-secondary font-bold text-sm flex items-center gap-1.5 group-hover:translate-x-1 transition-transform duration-300">
                             {nextProject.title}
-                            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                            <ArrowRight className="w-4 h-4" />
                         </span>
                     </Link>
                 </motion.div>
