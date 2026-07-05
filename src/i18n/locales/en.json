@@ -84,13 +84,21 @@
     "project": "Project",
     "stars": "Stars",
     "forks": "Forks",
-    "systemArchitecture": "System Architecture",
+    "systemArchitecture": "Technologies Used",
     "performance": "Performance",
     "uptime": "Uptime",
     "liveLink": "Live Link",
     "githubRepo": "GitHub Repo",
     "previousProject": "Previous Project",
-    "nextProject": "Next Project"
+    "nextProject": "Next Project",
+    "features": "Features",
+    "challenges": "Challenges",
+    "category": "Category",
+    "tags": "Tags",
+    "technologiesUsed": "Technologies Used",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "liveDemo": "Live Demo"
   },
   "skills": {
     "systemCapabilities": "System Capabilities",
